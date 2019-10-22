@@ -1,0 +1,508 @@
+                                                               PMGlobe 2.16
+PMGlobe -- an OS/2 Presentation Manager World Globe
+===================================================
+
+Copyright (c) IBM Corporation, 1991, 1992, 1993.
+
+Introduction
+""""""""""""
+PMGlobe is a program which displays the Earth as a globe using OS/2
+Presentation Manager.  You can choose to view the globe from any
+direction, or select one of a number of 'standard' views.
+
+In addition to simply displaying a picture of the world, PMGlobe will
+also let you light the globe as though by sunlight -- so you can see
+at a glance those areas of the globe where the sun has risen, and where
+it is night.  Additional options add shading to the globe for a
+three-dimensional effect, and let you measure and track distances
+between two points on the globe.  Other features are described in detail
+below.
+
+With the command interface included with PMGlobe, you can add markers,
+labels, and clocks to the globe and have more control over its actions.
+If you wish, you can use REXX (the scripting language included with
+OS/2) as a macro language for PMGlobe -- see PMGLOBEX.DOC for a
+description of the PMGlobe commands available; all of them can be used
+in a REXX macro.
+
+
+Installation
+""""""""""""
+PMGlobe is a 32-bit application, and therefore requires OS/2 Version
+2.  Only the file PMGLOBE2.EXE is needed, though you may wish to
+experiment with the sample macros (TEST.PMG and SPIN.PMG) or your own
+macros.  If using macros then they should be in the current working
+directory for PMGlobe.
+
+It is recommended that PMGlobe be started from a program object
+contained in a folder or on the desktop.  One way of setting this up is:
+
+ 1. Copy a 'Program' object template from the OS/2 Templates folder to
+    your desired target folder.
+ 2. On the new object, click mouse button 2, select the [->] button on
+    'Open', then select 'Settings'.  This should open the settings
+    notebook.
+ 3. On the 'Program' page enter the path and file name of PMGLOBE2.EXE,
+    and, for 'Working Directory', the directory in which you have placed
+    the sample macros.
+ 4. On the 'General' page, change the title to whatever you wish (e.g.,
+    PMGlobe), and un-check the 'Template' check box.
+ 5. Close the settings notebook.  Clicking on the Globe item should then
+    start PMGlobe.
+
+If, for that program object, you choose the setting "Minimize window to
+desktop" (on the 'Window' page) then when minimized the globe will
+appear on the desktop as an icon, which will continue to be updated if
+(for example) you have selected sunlighting.
+
+
+Using the Mouse with PMGlobe
+""""""""""""""""""""""""""""
+When PMGlobe is the active window, mouse button 1 is used to select a
+geographical location on the globe, and mouse button 2 can be used to
+select a new point of view.  Specifically:
+
+* Move the mouse pointer to any visible point on the globe, so that the
+  cross-hair cursor appears, and click mouse button 1.  This will cause
+  the 'PMGlobe Position/Distance Calculator' window to appear (if not
+  already visible).  You can move the calculator anywhere on the screen,
+  just like any other window.  Then:
+
+    1. The current position (Latitude and Longitude) of the mouse is
+    displayed if the mouse is over the globe.
+
+    2. A single click of mouse button 1 records the current point on the
+    distance calculator.  Up to two points can be recorded: if two are
+    shown then the distance between them is also displayed, in
+    kilometres and miles.  (The distance shown is the 'Great Circle
+    Distance', that is, the shortest distance between the points when
+    moving over the surface of the globe.)
+
+    3. A double click of mouse button 1 also records the current point
+    on the distance calculator, and makes it a 'fixed' (or 'base')
+    point.  This keeps that point visible on the calculator while you
+    select any number of other points.  You can set a new fixed point by
+    double-clicking mouse button 1 at another position.
+
+    4. If two points are shown, the 'Track' button will be enabled.
+    Pressing this will add the distance between the points to the 'Total
+    Track' distance (which is then shown on the calculator), and also
+    displays the new track (the line joining the two points) on the
+    surface of the globe.
+
+  You can clear all selected points, including the fixed point, by
+  pressing the 'Reset' button on the calculator.  This also resets the
+  total track distance to zero, and erases any tracks displayed on the
+  globe.
+
+  The 'Cancel' button hides the calculator.
+
+* Move the mouse pointer to any visible point on the globe and click
+  mouse button 2.  The globe will then be redrawn with that point at the
+  center of the view.
+
+  Once you have found your preferred view, selection by mouse button 2
+  can be disabled from the 'Views' menu, if you wish, to avoid
+  accidental change of the view.
+
+
+Menu options
+""""""""""""
+The PMGlobe menu options can be selected from the Action Bar in the
+usual way, and fall into three groups (in addition to the Help panel
+index):
+
+  'Options'  gives access to various miscellaneous settings
+  'Views'    is used to select what is seen, and from where
+  'Lighting' is used to choose the lighting effects and colors.
+
+Each group (and each submenu in each group) has a summary 'Help' panel
+as its first selection.  The other selections are as follows:
+
+'Options' -- miscellaneous settings
+
+  'Make window square': makes the window fit the globe on all edges,
+    if possible (it may not be possible on some narrow or low windows).
+    This is an instantaneous action; the window size and position is not
+    saved until you select 'Save windows' (see below), or PMGlobe is
+    closed, or OS/2 is shut down.
+
+  'Make full screen': enlarges the window to fill the screen entirely,
+    so that the title and action bars and the frame are just off the
+    screen and so not visible.  You can still use OS/2 key combinations
+    to move the window, select action bar items, etc.  For example: F10
+    followed by "O" and then "Q", will pull down the 'Options' menu and
+    then make the window a quarter of the size of the screen.
+
+    This is an instantaneous action; the window size and position is not
+    saved until you select 'Save windows' (see below), or PMGlobe is
+    closed or shut down.
+
+  'Make quarter screen': makes the window be centred and fill a quarter
+    of the screen (useful as a quick recovery from Make Full Screen).
+    This is an instantaneous action; the window size and position is not
+    saved until you select 'Save windows' (see below), or PMGlobe is
+    closed, or OS/2 is shut down.
+
+  'Make desktop': makes PMGlobe become (and remain) the bottom window;
+    that is, puts it behind all other windows.  Click anywhere visible
+    to bring PMGlobe to the foreground (after confirmation).  This does
+    not change the size of the window.  See below for more details.
+
+  'Show position/distance calculator': when selected, this makes the
+    position and distance calculator appear (it will also appear
+    automatically if you click on the window with mouse button 1).
+    See above for information on how to use the calculator.
+
+  'Cross-hair cursor': when selected, this requests that a cross-hair
+    cursor be used when the mouse pointer is over the globe itself.
+    If not selected, the standard desktop pointer is used.
+
+  'Draw at low priority': requests that map drawing be carried out at
+    lower than normal priority, to minimize impact on other applications.
+    This is the default; if PMGlobe appears to halt drawing when (for
+    example) a communications program is running in a DOS session, try
+    de-selecting this option.
+
+  'Halt macro': is enabled when a macro (see elsewhere) is running.  If
+    selected, any macros running are halted.  The Ctrl-Break key
+    combination has the same effect.
+
+  'Set timezone': this pops up a dialog that lets you set the time zone
+    information.  You only need to do this for a 'sunlight' view, and
+    even then only need to do it once.  If no other program updates the
+    current time zone information then you may also have to change it
+    whenever you change the clock on your computer for daylight saving
+    (summer or winter) time.  PMGlobe assumes that your computer clock
+    is set to local time; the timezone dialog describes your local time
+    in terms of GMT (Greenwich Mean Time), and hence gives PMGlobe the
+    information that it needs to calculate the sun's position.
+
+  'Set refresh time': this lets you choose how long PMGlobe will wait
+    after completing a view of the globe before it redraws it.  This
+    takes effect for the 'Sunlight' view (which needs regular updating
+    to give a useful picture) or if any clocks may be displayed.  The
+    refresh takes place shortly after the wall-clock time that is a
+    multiple of the selected refresh interval (for example, if 'One
+    Hour' is selected, the refresh should take place on the hour).
+
+  'Save settings': this saves the settings you have selected; they will
+    then be used automatically when PMGlobe is next started.  See below
+    for details of which settings are saved; these are also saved
+    automatically when OS/2 is shut down or PMGlobe is closed.
+
+  'Restore settings': restores settings to those last saved.
+
+  'Reset settings to defaults': sets settings to the defaults used when
+    PMGlobe was first run.
+
+  'Save windows': this saves the position and size of the main PMGlobe
+    window, and the position of the distance calculator.  These will
+    be used automatically when PMGlobe is next started, and are also
+    saved automatically when OS/2 is shut down or PMGlobe is closed.
+
+  'Restore windows': restores the position and size of the windows to
+    those last saved.
+
+  'Close': leaves PMGlobe.  The settings, window positions, etc., are
+    saved automatically (see below).
+
+'Views' -- where and what you see
+
+  'Standard views': this gives you a choice of standard views (Europe &
+    Africa, Americas, India & Asia, Pacific, and the two Poles).  Use
+    mouse button 2 (see above) to select any point to be placed at the
+    center of the view.
+
+  'Grid line choices': lets you choose which grid lines (if any) are to
+    be shown, and the color (one of fifteen) of the grid lines.
+
+  'Snap to equator': this leaves the Longitude of the center of view
+    unchanged and sets the Latitude to zero (the equator).  Globe
+    drawing is faster when the Latitude of the center of view is zero
+    than when globe is tilted.
+
+  'Snap to Greenwich': sets the Longitude of the center of to zero (the
+    Prime Meridian) while leaving the Latitude unchanged.  This has no
+    effect on drawing time.
+
+  'Allow mouse button 2': if selected, lets you rotate and tilt the
+    globe using Mouse Button 2 (see above).  It can be de-selected to
+    prevent accidental movement of the direction of view.
+
+'Lighting' -- how the globe is seen
+
+  'Sunlight': asks for "sun lighting" of the globe.  This lets you see
+    at a glance which parts of the world are in daylight, and which are
+    in the dark.  This lighting is (of course) time dependent, so
+    PMGlobe needs to know the time zone you are in, and will ask you for
+    it if it is not already set.  If Sunlight is selected, the globe
+    will be redrawn at regular intervals (as selected via 'Set refresh
+    time', under 'Options').  See below for notes on the accuracy of the
+    time and sunlight information.
+
+  'Sunlight from space': is similar to 'Sunlight', except that it is
+    more realistic -- you cannot see details on the dark side of the
+    earth except where lit by twilight. For best realism, choose a black
+    background, 3-D, astronomical twilight, and no grid lines (or
+    perhaps low-key grid lines, such as GREY).  This setting implies
+    (sets) 'Sunlight'.
+
+  'Sunlight and starlight': shows the 'Sunlight from space' view, with
+    the land masses on the "dark side" of the earth made visible, too.
+    (If you cannot see them, turn up the brightness on your display.)
+
+  '3-D': adds shading, to give the globe a "three-dimensional"
+    appearance.  On a VGA screen there are only two shades of green and
+    blue available, so this will give a rather grainy and mottled
+    appearance (especially if a Sunlight option is selected), so
+    this setting may not give an acceptable display.  On a BGA (8514),
+    or better screen and adapter, much smoother shading is possible.
+
+  'Twilight settings': lets you select how much of the "dark side" of
+    the globe is to be shown when sun lighting is in effect.  When
+    theoretical sunrise/sunset is selected, the globe is lit as though
+    by a point source at the center of the sun: exactly half of the
+    globe is lit.  For the meaning of the other settings, see the
+    detailed notes below.
+
+  'Land color': lets you select one of nine colors for land masses and
+    islands.  The default is Green, though Yellow and White are good
+    alternatives.
+
+  'Water color': lets you select one of nine colors for lakes and seas.
+    The default is Blue; Gray is an alternative.
+
+  'Background color': lets you select one of sixteen background colors.
+    A black background gives a nice 'deep space background' effect,
+    though may be a bit too much of a contrast for some tastes; you may
+    prefer Dark Blue.
+
+
+Data and time limits and accuracy
+"""""""""""""""""""""""""""""""""
+The data used for presenting the globe are loaded in compressed form (a
+little less than 22 Kilobytes).  The coastline and lake data were
+compiled from a number of different sources, with some manual editing to
+improve the representation in critical areas such as narrow straits and
+isthmuses.  The accuracy of the coastline and other data is not
+guaranteed in any way, but is believed to be within 40km (25miles) in
+the worst case (near the equator) and significantly better in the
+East-West direction in Northern and Southern latitudes.
+
+When the distance calculator is used, the mouse position can only be
+determined to the nearest pel (picture element) on the screen.  The
+longitude and latitude is then reported as being at the center of that
+pel.  Distance calculations between the two positions thus reported are
+then calculated from those coordinates and should be accurate to the
+nearest unit (km or mile), or 0.2%, whichever is greater.  The 0.2%
+limit is a consequence of assumption used in the calculation that the
+earth is spherical (which it is not).
+
+Time and sun position calculations are only important when one of the
+'Sunlight' options is selected.  In this case, PMGlobe needs to know the
+current date and time-of-day (taken from your computer's clock -- make
+sure it is set correctly).  It also needs to know which time zone you
+are in: if not already set it will ask you to set it (you may also need
+to change it if your computer clock is changed for daylight saving,
+summer, or winter time).
+
+From the current time and time zone information, PMGlobe can determine
+apparent solar time (which is as much as 16 minutes different from the
+Civil time used for clocks) and hence the sun's position.  This is then
+used to display the globe as though lit by the sun: the light/dark
+dividing line thus shows where the sun is rising or setting.
+
+The various calculations done should give an accuracy of sun position
+that leads to a sunset or sunrise indication that is correct to within
+twenty seconds of time.  Actual sunset or sunrise times will be a little
+different because of atmospheric effects, which vary with the time of
+year, the weather, and latitude.  However, PMGlobe does give a useful
+indication of sunrise and sunset, and of course lets you see at a glance
+which parts of the globe are in night or daylight.
+
+Note that results may be incorrect if you set your computer's date to be
+earlier than 1 January 1990.  Also, the formulae used to calculate the
+sun's position may prove to be inaccurate at some time in the future,
+because the earth's movement is not entirely predictable.
+
+
+Twilight settings
+"""""""""""""""""
+The sun is not a point source of light, and the atmosphere scatters its
+light, too.  Therefore, sunlight is seen on the "dark side" of the earth
+for some time before the sun rises and for some time after it sets.  You
+can select to see all, part, or none of this twilight zone on the globe.
+
+Twilight, when shown, is always shown shaded.  On a VGA (standard)
+screen it can appear mottled or granular, because there are only two
+shades of each color available to PMGlobe.
+
+The twilight settings provided only have an effect when 'Sunlight' is
+selected, and are:
+
+  'Theoretical sunrise/set': this lights the earth as though by a point
+    source at the center of the sun; the sunrise/set line is shown as
+    though light ceased when the center of the sun crossed the horizon,
+    and so no twilight can be seen.
+
+  'Ideal sunrise/set': this is a practical and generally accepted
+    definition (fifty minutes of angle after the theoretical
+    sunrise/set) which allows for the diameter of the sun and common
+    atmospheric effects.  The line seen on the globe joins the points
+    at which the disc of the sun will have just disappeared or be just
+    about to appear, and encloses a very narrow band of twilight.
+
+  'Civil twilight': the boundary marks the end of "civil twilight" -- a
+    convenient point used for legal purposes (for example, when it is
+    too dark to carry out certain tasks).  Please note that PMGlobe's
+    rendering of this line must not be used for any critical or legal
+    decisions; errors and bugs are always possible, and the definition
+    used by PMGlobe (six degrees after the theoretical sunrise/set) may
+    not match the legal definition used in your country.
+
+  'Naval twilight': the boundary indicates the points where it is dark
+    for all practical purposes: the center of the sun is twelve degrees
+    below the horizon.
+
+  'Astronomical twilight': there is no boundary; light fades to zero,
+    where it is perfectly dark: no effects from sunlight can be
+    detected.  At this point, the center of the sun is eighteen degrees
+    below the horizon.
+
+
+Performance considerations
+""""""""""""""""""""""""""
+PMGlobe is designed as a '32-bit' application, with heavy use of long
+(32-bit) integers.  All computation is done using integers, so a math
+coprocessor is not required.
+
+In general, the simpler the image presented the faster it is drawn.
+Selecting sunlight, 3-D, and twilight all slow down the drawing (but
+'sunlight in space' is usually faster than 'sunlight' alone).
+
+Non-equatorial (tilted) views take significantly longer to draw than
+equatorial views (hence the 'Snap to equator' option).
+
+As a rough guide, the simplest (flat lighting, equatorial view, no
+sunlight) image with a diameter of 400 picture elements should take
+about 4-6 seconds to draw on a 25MHz 386 PC or PS/2.  The time taken
+is inversely proportional to the speed of the processor and proportional
+to the square of the image diameter.  The most complicated drawing (3-D
+shading, non-equatorial view, sunlight) might take about four times
+longer.
+
+
+Saved settings
+""""""""""""""
+The following settings are saved (in the system file "OS2.INI") when
+'Save settings' is selected.  They are also automatically saved when
+PMGlobe is closed or if OS/2 is shut down while PMGlobe is running:
+
+  Latitude and Longitude of the center point of the view
+  Grid (Meridians and Parallels) selections and color
+  Lighting selections (Sunlight, Sunlight from space, Starlight, 3-D)
+  Twilight selection (degrees)
+  Land, Water, and Background colors
+  Refresh (re-draw) interval.
+  Whether 'Desktop' is selected (globe will be bottom window)
+  Whether 'Draw at low priority' is selected
+  Whether mouse button two is active ('Allow mouse button 2')
+
+  'Restore settings' restores all of these to the last saved values.
+  'Reset settings to defaults' sets all of these to the PMGlobe defaults.
+
+The following settings are saved, also in OS2.INI, when 'Save windows'
+is selected, OS/2 is shut down, or PMGlobe is closed (unless the PMGlobe
+window is minimized or maximized):
+
+  The position and size of the main (globe) window
+  The position of the 'Position/distance calculator' window.
+  The position of the 'Command dialog' window.
+
+  'Restore windows' restores these to the values used when PMGlobe was
+  last started.
+
+The following setting is saved in OS2.INI when Mouse button 1 is
+double-clicked on the globe:
+
+  The latitude and longitude of the current 'fixed point'.
+
+  This is cleared when 'Reset' is selected in the Position/distance
+  calculator.
+
+By default, all the settings are saved in the OS2.INI file under the
+application name "PMGlobe".  You can extend this name (and hence control
+different instances of PMGlobe and its settings) by using the NAME
+parameter when starting PMGlobe.  This parameter constructs the name
+used by adding the word you give (which should be from 1 to 25
+characters long, with no blanks) to the stem "PMGlobe.".
+
+For example, if you run PMGlobe with the command:
+
+   "start pmglobe name Fred"
+
+then the entries in the OS2.INI file will be stored under the name
+"PMGlobe.Fred".  Note that the case of each letter is significant.
+
+
+The 'Make Desktop' setting
+""""""""""""""""""""""""""
+The Desktop setting requests that PMGlobe will keep itself at the bottom
+of all the windows on the screen. Under OS/2 2.x the desktop icons are
+part of the desktop, and so PMGlobe cannot get "underneath" them;
+selecting both 'Make Desktop' and 'Make full screen' is therefore not
+advised as it would hide the desktop icons (unless you have moved them
+off the desktop and into a different folder).
+
+Once on the desktop, the usual PMGlobe mouse functions are suspended.
+Clicking on PMGlobe will ask for confirmation before leaving the Desktop
+state.  If leaving the desktop and the globe and background window fills
+or is larger than the screen then PMGlobe will revert to the
+Presentation Manager default size and position when it leaves the
+desktop.
+
+PMGlobe will remember the Desktop state (and window positions) when
+Shutdown by OS/2.  It can also be forced to start up on the Desktop by
+specifying the parameter 'DESKTOP' when starting PMGlobe, for example:
+"start pmglobe desktop".  To fill the screen, add the parameter
+'FULLSCREEN' on startup.
+
+Do not start two applications (such as certain "wallpaper" programs, or
+two instances of PMGlobe) that both attempt to remain on the desktop.
+
+
+Time Zone interface details
+"""""""""""""""""""""""""""
+Personal computer operating systems have a variety of ways of holding
+timezone information (some compilers even build in a default
+geographical location!), but to date no standard mechanism has been
+defined.
+
+PMGlobe introduces a new mechanism for holding timezone information.
+The current timezone offset, daylight savings offset, and timezone name
+is held in the system file "OS2SYS.INI" in a general format that any
+application can use and which can easily be accessed by application
+programs (for example, by C or REXX programs).
+
+Specifically, the information is held as three words in the OS2SYS.INI
+file, under the name "TimeZone" with key "Active".  This string holds at
+least three words separated by exactly one blank, and with no leading
+blanks.   The third word will be followed by either a blank (to allow
+future extension) or the C 'end of string' null character.
+
+The three words are:
+
+  base-time-offset-from-GMT  summer-time-offset  zone-abbreviation
+
+where the two times have the format [+|-][h]h[:[m]m[:[s]s]]] and the
+zone-abbreviation is either "???" (indicating unknown) or "xxx", where
+xxx are three or four uppercase alphabetics.  For example:
+
+  +0:00 +1:00 BST
+
+The total offset from GMT is the sum of the two time offsets.
+
+-----------
+
+Mike Cowlishaw, IBM UK Laboratories

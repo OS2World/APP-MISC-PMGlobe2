@@ -1,0 +1,4 @@
+/* first test macro */
+"mark  +43.5 -4.7 label Llanes"
+exit rc
+

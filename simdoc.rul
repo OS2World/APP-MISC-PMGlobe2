@@ -1,0 +1,93 @@
+***********************************************************
+*   MO Monospace Formatter                   SIMDOC.RUL   *
+*   Copyright IBM Corporation, 1993          16 Mar 1993  *
+*---------------------------------------------------------*
+*   This file is the formatting rules file for            *
+*   the MO Monospace Formatter to use in formatting       *
+*   the tagset defined in SIMDOC.DTD.  All MO rules       *
+*   that can appear in a .RUL file may also be used       *
+*   as processing instructions.                           *
+*   It is not necessary to define rules for every         *
+*   tagged element.  If an element is processed and       *
+*   there are no formatting rules for it, it inherits     *
+*   the rules of its parent.                              *
+*                                                         *
+*   MO does not verify that the elements whose rules      *
+*   are define here are actually valid in any formally-   *
+*   defined SGML Document Type Definition (DTD).  If      *
+*   rules are defined for an element that never occurs,   *
+*   then they are simply irrelevant, taking up room       *
+*   in the Universe, but these orphan rules do no harm.   *
+*                                                         *
+*   .RUL file rules:                                      *
+*                                                         *
+*   1.  Blank lines are ignored.                          *
+*   2.  Lines starting with '*' are comments, and         *
+*       are ignored.                                      *
+*   3.  A rule instruction may be continued on more       *
+*       than one line.  A final comma (,) on a line       *
+*       indicates that the line is continued.             *
+*   4.  No single instruction, howver many lines it uses, *
+*       may be more than 250 characters long.             *
+*   5.  An instruction that defines rules for an element  *
+*       that already has a definition simply adds those   *
+*       rules to the existing definition (or overrides    *
+*       them).  It is Ok to use more than one instruction *
+*       to define all the rules for one element.          *
+*                                                         *
+*                                                         *
+***********************************************************
+def page lmar 3 ll 70
+
+el body flow align left
+
+el h1 map title h1title
+el h1title skip 2 before skip 1 after noflow align left uscore '='
+*el h1title skip 3 before skip 2 after noflow align left caps
+el h2 map title h2title
+el h2title skip 2 before break after noflow align left uscore '"'
+*el h2title skip 3 before skip 2 after noflow align left
+el h3 map title h3title
+el h3title skip 2 before skip 1 after noflow align left,
+   prefix "----- " suffix " -----"
+
+el  p skip 1 before break after
+el  q prefix '"' suffix '"'
+el  i prefix '*' suffix '*'
+el  e prefix '*' suffix '*'
+el  h caps
+
+el  block skip 1 both noflow align left indent 3
+el  line break both
+
+* ----- Lists are tricky in SIMDOC ----- *
+el  list skip 1 both unmap li
+*att list form=def indent  4 ltype N map li dd
+att list form=def indent  4 ltype N map li dd
+att list seq=ord ltype O
+att list seq=unord ltype U
+el  lt suffix ' ' skip 1 before para -4 tab after
+*el  lt suffix ' ' skip 1 before break after para -4 tab after
+el  li skip 1 both  itemize tab before hang 4
+el  dd skip 1 after break before
+
+*<?el p break both skip 1 before>
+*<?el dl skip 1 both indent 10>
+*<?el dt suffix ': ' skip 1 before para -10 tab after>
+*<?el dd skip 1 after>
+*
+**LIST
+*<?el p skip 1 before break after>
+*<?el ul skip 1 both ltype U>
+*<?el li skip 1 both itemize tab before hang 4>
+**LISTS
+*<?el p skip 1 before break after>
+*<?el ol skip 1 both ltype O>
+*<?el ul break  both ltype O>
+*<?el li break  both itemize tab before hang 4>
+**DLIST
+*<?el p break both skip 1 before>
+*<?el dl ignore skip 1 both indent 10>
+*<?el dt  unignore asiscaps suffix ': ' skip 1 before para -10 tab after>
+*<?el dd           icaps skip 1 after>
+

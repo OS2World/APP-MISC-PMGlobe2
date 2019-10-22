@@ -1,0 +1,2 @@
+/**/ say 'bad rc now...'; return 1
+

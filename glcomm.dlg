@@ -1,0 +1,22 @@
+
+DLGTEMPLATE ID_COMMDLG MOVEABLE
+BEGIN
+DIALOG "PMGlobe command", ID_COMMDLG,  10, 10, 275, 55,
+     FS_NOBYTEALIGN | WS_SAVEBITS, FCF_SYSMENU | FCF_TITLEBAR
+  BEGIN
+  LTEXT "Please enter a PMGlobe command:",  ID_COMMTEXT, 10, 40, 130,  8
+  ENTRYFIELD ""               , ID_COMMDLGNAME,      10, 25, 255,  8 ,
+             ES_MARGIN | ES_AUTOSCROLL| WS_TABSTOP
+/**
+  AUTOCHECKBOX  "Redraw after", ID_COMMDLGDRAW,      10,  7,  80, 10 ,
+             BS_NOCURSORSELECT
+  AUTOCHECKBOX  "Trace",        ID_COMMDLGTRACE,     90,  7,  50, 10 ,
+             BS_NOCURSORSELECT
+**/
+  DEFPUSHBUTTON "OK",     DID_OK,                   140,  5,  55, 14 ,
+             BS_NOCURSORSELECT
+  PUSHBUTTON    "Cancel", DID_CANCEL,               210,  5,  55, 14 ,
+             BS_NOCURSORSELECT
+  END
+END
+

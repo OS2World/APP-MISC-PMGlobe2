@@ -1,0 +1,8 @@
+; definition file
+
+NAME PMGLOBE WINDOWAPI
+DESCRIPTION 'PMGlobe - mfc'
+PROTMODE
+STACKSIZE 12000
+
+

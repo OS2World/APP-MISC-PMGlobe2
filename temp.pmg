@@ -1,0 +1,14 @@
+/* Sample (test) startup macro */
+
+/* Get the version information and set a new title */
+'extract version versionb'
+'set title PMGlobe -' version '('versionb'-bit)'
+
+/* Mark some chosen cities */
+"mark  51o30    0   label London"
+"mark  37.8  -122.4 label San Francisco"
+"mark  40.8   -74.0 label New York"
+"mark  35.7   139.8 label Tokyo"
+"mark -33.7   151.3 label Sydney"
+
+

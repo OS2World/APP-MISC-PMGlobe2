@@ -1,0 +1,5 @@
+/* ORIGIN.PMG -- Show the origin in a Large font */
+'font classic size 18 colour darkred face Times New Roman Italic'
+'set font classic'
+'mark 0 0 y centre label The Origin'
+

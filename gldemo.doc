@@ -1,0 +1,35 @@
+GLDEMO.RAM
+""""""""""
+
+This .RAM file should contain all the files necessary to generate
+a 32-bit version of PMGlobe.  Some of the source files are considered
+IBM Confidential and are not included in this package (these are
+included in this package as dummy files, length 123 bytes, to keep MAKE
+happy).  Others are included for demostration purposes only: please do
+NOT circulate or distribute any generated .EXE files -- multiple
+versions of PMGlobe would be a developer's nightmare!
+
+All the files in this package are IBM Internal Use Only, and may not be
+given to customers or competitors.
+
+Some random notes:
+
+* The MAKE file looks odd, because it can generate both 16-bit and
+  32-bit .EXEs.  It probably doesn't need modification for your for
+  system for 32-bit generation.
+
+* The MAKE file generates a GLOBE32.EXE (or GLOBE.EXE for 16-bit).
+
+* The BUILD.CMD contains an example of the correct MAKE command (for
+  both 16 and 32 bit).
+
+* 32-bit Object files have extension .O32
+
+* DUALPATH.H allows the same source to be used for both 16-bit and
+  32-bit versions.  It is required for both at present.
+
+* A couple of test macros (xx.PMG) are included
+
+* TEE.EXE is a pipe-splitter, included as used in the MAKE file
+
+

@@ -1,0 +1,83 @@
+********************************************************************
+* :nick.PMGLOBE    :sec.IBM          :disk.OS2TOOLS
+* :title.32-bit & 16-bit PMGlobe -- view the Earth as a globe
+* :version.2.11    :date.93/01/12   :summary.Self     :support.X
+* :oname.Mike Cowlishaw             :onode.WINVMB     :ouser.MFC
+* :aname.Mike Cowlishaw             :anode.WINVMB     :auser.MFC
+* :hw.286+, colour display          :sw.OS/2 PM, C
+* :ops.OS/2 1.2, 1.3, 2.0           :lang.C           :source.N
+* :doc.Self (Help), + Doc
+* :kwd.demo demonstration globe world earth PM
+* :abs.PMGlobe displays the Earth as a globe.  You can view it from any
+* direction, and also ask for sunlighting so you can see where it is
+* daylight and where it is night.  Most features can be programmed with
+* REXX macros.
+* :lic.By placing material on this conference, I agree to grant
+* IBM a non-exclusive, royalty-free license for the material
+* as set forth in the LICENSE AGREEMNT file on this conference.
+************************************************************************
+*
+*  Simply download this file (in binary, using the name PMGLOBE.EXE);
+*  then start it from an OS/2 window using "START PMGLOBE".  Or add
+*  the program to the Start Programs list or an OS/2 2.0 folder and
+*  start it from there.
+*
+*  This package contains both 16-bit and 32-bit versions of the .EXE
+*  file.  Use the 16-bit version with OS/2 1.x; use either with OS/2
+*  2.x (though the 32-bit version is up to 3.7 times faster than the
+*  16-bit version, so is recommended).  The two .EXEs should be
+*  functionally identical.
+*
+*  Select 'Help' for operation instructions and information; see
+*  PMGLOBE.DOC for further details.
+*
+      PMGLOBE   DOC      *  Documentation
+      PMGLOBEI  DOC      *  Documentation (internal/16-bit users)
+      PMGLOBE   EXEBIN   *  16-bit version
+      PMGLOBE2  EXEBIN   *  32-bit version
+*
+*  Suggestions for improvements, questions, etc., are welcome.  Please
+*  use the PMGLOBE FORUM on IBMPC.
+*
+*  This package supports macros written in REXX, and a limited set of
+*  commands.
+*
+*  *** These commands are experimental; some details may change.
+*
+      PMGLOBEX  DOC      *  Extended command and macro documentation
+      TEST      PMG      *  Sample PMGlobe macro -- marks some cities
+      SPIN      PMG      *  Sample PMGlobe macro -- spin in real time
+      FASTSPIN  PMG      *  Sample PMGlobe macro -- spin as fast as possible
+*
+*  For more sample macros, see PMGLOBE PROCS on the IBM Internal
+*  IBMPC conference disk.
+*
+************************************************************************
+*  History:
+*
+*  1991-11-26: 1.00 Initial release
+*  1991-11-28: 1.10 Save windows, Make Desktop, no longer 'idle' time
+*  1991-12-09: 1.11 Better Desktop, preserve Fixed Point
+*  1991-12-11: 1.12 Grid line colors, partial globe/background redraw etc
+*  1991-12-11: 1.13 15' grid lines, "space" view, faster grid drawing
+*  1991-12-23: 1.15 Equator alone, twilight bands, restore settings/window
+*  1991-12-31: 1.20 Improved geographical data (1800x900 basis)
+*  1992-01-08: 1.22 Add static icon, minor PM enhancements, etc.
+*  1992-01-29: 1.35 'Starlight', and TEST markers
+*  1992-02-01: 1.40 Performance improvements, disallow grey grid lines
+*  1992-02-11: 1.41 32-bit version added; 3.5x faster.  No function change
+*  1992-02-12: 1.42 Workaround RC and C/2 problems
+*  1992-03-10: 1.55 Workaround for 6.304 beta change; limited command set
+*  1992-03-16: 1.60 Macro halt, MESSAGE, user time offset, etc.
+*  1992-03-19: 1.70 Independent grid and map drawing
+*  1992-04-08: 1.75 Colors, DIAMETER, MARGIN, IDLEDRAW, MARK DELETE, etc.
+*  1992-04-16: 1.80 New Desktop handling, minor enhancements
+*  1992-06-19: 1.85 Improved Timezone, etc., colors for land and water
+*  1992-06-24: 1.86 Save Max/Min, allow 15 colors for fonts
+*  1992-09-01: 2.00 [External 32-bit version; OS2EWS]
+*  1992-09-25: 2.02 Clocks on marks; improved priority strategy; better EOT/DEC
+*  1992-10-06: 2.03 Make Quarter Screen
+*  1993-01-02: 2.10 Tracks, Graphics, Crosshair cursor, NAME parameter, etc.
+*  1993-01-12: 2.11 Better VGA support; FASTSPIN.PMG
+*
+

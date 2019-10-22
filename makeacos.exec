@@ -1,0 +1,53 @@
+/* Build a 'C' long ACOS routine */
+/* Mike Cowlishaw (MFC at WINVMB)   22 Oct 1991 */
+/* 1998.08.15 .. also write binary table        */
+file='LACOS C G1'
+address command 'ERASE' file
+ 
+call out '/* Long ACOS(x)                                      */'
+call out '/*   X is *1000: -1000 to 1000 (for -1.000 to 1.000) */'
+call out '/*   returns degrees*1000, i.e, 0->180000            */'
+call out '/*   ACOS(-1)=180o, ACOS(0)=90o, ACOS(1)=0o          */'
+call out '/*   table is degrees *500 i.e, 0->45000             */'
+call out '#include <stdio.h>'
+call out 'long lacos(long v) {'
+call out '  static unsigned int tableô1001ë={'
+call maketable
+call out '  };'
+call out '  if (v<0) {if (v>=-1000L)'
+call out '             return (90000L-(long)tableô-vë)*2L;}'
+call out '      else {if (v<= 1000L)'
+call out '             return (long)(tableôvë)*2L;}'
+call out '  printf("Bad value to LACOS: %li\n",v);'
+call out '  return 0;'
+call out '  }; /* lacos */'
+ 
+call lineout file /* close */
+exit
+ 
+maketable:
+ collect=' '
+ bincollect=''
+ do x=0 to 0.999 by 0.001
+   num=format(acos(x)*500,,0)
+   bincollect=bincollect||d2c(num, 2)
+   collect=collect num','
+   if length(collect)<70 then iterate
+   call out collect
+   collect=' '
+   end
+collect=collect '0'  /* Add the 1.000 value */
+bincollect=bincollect||d2c(0, 2)
+call out collect
+ 
+say 'len' length(bincollect)
+binfile='ACOS BRCBIN G1'
+address command 'ERASE' binfile
+call lineout binfile, bincollect
+call lineout binfile    /* close */
+return
+ 
+ 
+ 
+out: call lineout file, arg(1); return
+

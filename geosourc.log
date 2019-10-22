@@ -1,0 +1,24 @@
+----- GEO FORUM appended at 10:50:52 on 91/10/08 GMT (by RHODGES at RALYDPD4) -
+Subject: Map
+ 
+One source I've used is the "Austin Code Works".  They have a
+long/lat data file that has approx 130K points and a US cities
+data files that has approx 33K cities by long/lat along with a
+6K point file of the US.  These files costs $30 & $35 each and
+Austin code works can UPS overnight if necessary.  Their address
+is:
+    The Austin Code Works          Voice (512) 258-0785
+    11100 Leafwood Lane            Fax   (512) 258-1342
+    Austin, TX 78750-3464 USA
+ 
+The only problem with the files is that they are in ASCII format
+and contain some errors (line segments don't close).  I've used
+them to develop a Windows based mapping program for network display.
+While they suffice, you can get more detailed data sets from
+the US Geological Service with up to 6 million points but, the draw time
+for this many points is terrible if you don't cull out the segments
+that are invisible at the current display resolution
+ 
+Robert D. Hodges               RHODGES @ RALYDPD4
+ 
+

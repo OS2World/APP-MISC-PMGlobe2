@@ -1,0 +1,16 @@
+/* Macro to set up some cities as marks, then display without labels, */
+/* as oft desired by Jay and others... */
+
+file='city.lst'          /* input file */
+
+'set marker .'           /* default marker to be dot, please */
+
+do while lines(file)>0
+  parse value linein(file) with lat lon name
+  'mark' lat lon 'label' name
+  end
+
+'set labels off'         /* just see the marks, not the names */
+'set clocks off'         /* .. or clocks */
+
+

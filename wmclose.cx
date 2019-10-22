@@ -1,0 +1,23 @@
+/* WM_CLOSE with settings compare */
+
+  case WM_CLOSE: {
+    static char  changetext[]=     /* changes confirmation */
+      "One or more of the viewing settings have changed since \
+PMGlobe started (or since the settings were last saved).\n\n\
+Would you like to save the current settings for next time?";
+    char settings[MAXSETLEN+1];
+    savepos();                     /* save window positions */
+    set2str(settings);             /* get current settings */
+    if (strcmp(settings, initset)!=0) {
+      HWND   hwndmode;
+      if (diag) {printf("Then settings: %s\n",initset );
+                 printf(" Now settings: %s\n",settings);}
+      if (desktop) hwndmode=HWND_OBJECT;    /* don't pop up */
+              else hwndmode=hwndFrame;
+      if (WinMessageBox(HWND_DESKTOP, hwndmode, changetext,
+              NAME,  /* title */ 0,
+              (unsigned)(MB_DEFBUTTON1 + MB_YESNO + MB_ICONQUESTION))
+           == MBID_YES) saveset();
+      } /* had changes */
+    break;}
+

@@ -1,0 +1,29 @@
+                                                             PMGlobe 2.19
+PMGlobe -- an OS/2 Presentation Manager World Globe
+===================================================
+
+Copyright (c) Mike Cowlishaw, 1993-2019.  All rights reserved.
+Parts Copyright (c) IBM, 1993-2009.
+
+Abstract
+""""""""
+PMGlobe is a program which displays the Earth as a globe using OS/2
+Presentation Manager.  You can choose to view the globe from any
+direction, or select one of a number of 'standard' views.
+
+In addition to simply displaying a picture of the world, PMGlobe will
+also let you light the globe as though by sunlight -- so you can see
+at a glance those areas of the globe where the sun has risen, and where
+it is night.  Additional options add shading to the globe for a
+three-dimensional effect, and let you measure and track distances
+between two points on the globe.  Other features are described in the
+file PMGLOBE.DOC.
+
+With the command interface included with PMGlobe, you can add markers
+labels, and clocks to the globe and have more control over its actions.
+If you wish, you can use REXX (the scripting language included with
+OS/2) as a macro language for PMGlobe -- see PMGLOBEX.DOC for a
+description of the PMGlobe commands available; all of them can be used
+in a REXX macro.
+
+Mike Cowlishaw, IBM UK Laboratories

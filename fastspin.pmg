@@ -1,0 +1,38 @@
+/* Spin the globe as fast as possible */
+
+/* For best results, use a fast machine and make the globe very small. */
+/* Minimize to desktop is highly recommended (see PMGLOBE.DOC); on a   */
+/* 486-25 or better, this should give quite smooth motion, using the   */
+/* 32-bit version of PMGlobe.                                          */
+
+/* This sample macro is unclassified.  Author: Mike Cowlishaw, based   */
+/* on an idea by W. Eliot Kimber.                                      */
+
+lonstep=19                    /* degrees to rotate each time */
+                              /* should be in range -180 to 180 */
+
+"EXTRACT title showdraw idledraw margin diag"
+signal on halt
+"SET TITLE Rotating PMGlobe"  /* for title bar */
+"SET SHOWDRAW OFF"            /* no partial draws */
+"SET IDLEDRAW ON"             /* hog not */
+"SET MARGIN   10"             /* extra edge space, please */
+"SET DIAG     OFF"            /* and no slowdown */
+do forever                    /* only 'halt macro' will stop */
+  "EXTRACT viewlon"           /* allow update by user */
+  viewlon=viewlon-lonstep
+  /* Both checks are here in case of negative rotation */
+  if       viewlon<-180 then viewlon=viewlon+360
+   else if viewlon> 180 then viewlon=viewlon-360
+  "SET VIEWLON" viewlon  /* New view, please */
+  "WAIT REDRAW"          /* Wait until drawn */
+  end
+
+halt:  /* Restore settings */
+"SET IDLEDRAW" idledraw
+"SET SHOWDRAW" showdraw
+"SET MARGIN"   margin
+"SET TITLE"    title
+"SET DIAG"     diag
+exit
+

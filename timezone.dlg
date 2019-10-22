@@ -1,0 +1,33 @@
+DLGTEMPLATE 700 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+  DIALOG  "Set Time Zone", 700, 54, 56, 192, 130,
+          FS_NOBYTEALIGN | FS_DLGBORDER |
+          WS_VISIBLE | WS_CLIPSIBLINGS | WS_SAVEBITS, FCF_TITLEBAR
+  BEGIN
+  CONTROL "", 701, 8, 8, 46, 113,
+          WC_LISTBOX, WS_TABSTOP | WS_VISIBLE
+  CONTROL "Please select a time zone, or enter winter offset from GMT below then select daylight savings if summer",
+          702, 68, 90, 116, 33,
+          WC_STATIC, SS_TEXT | DT_LEFT | DT_TOP |
+          DT_WORDBREAK | WS_GROUP | WS_VISIBLE
+  CONTROL "0", 703, 69, 71, 51, 7,
+          WC_ENTRYFIELD, ES_LEFT | ES_MARGIN |
+          WS_TABSTOP | WS_VISIBLE
+  CONTROL "hours ahead of GMT (+/-)", 704, 130, 66, 55, 17,
+          WC_STATIC, SS_TEXT | DT_LEFT | DT_TOP | DT_WORDBREAK |
+          WS_GROUP | WS_VISIBLE
+  CONTROL "OK", 710, 70, 6, 39, 13,
+          WC_BUTTON, BS_PUSHBUTTON | BS_DEFAULT |
+          WS_TABSTOP | WS_VISIBLE
+  CONTROL "Cancel", 711, 142, 6, 39, 13,
+          WC_BUTTON, BS_PUSHBUTTON |
+          WS_TABSTOP | WS_VISIBLE
+  CONTROL "No daylight savings in effect", 720, 62, 51, 124, 10,
+          WC_BUTTON, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_VISIBLE
+  CONTROL "One hour daylight savings", 721, 62, 38, 124, 10,
+          WC_BUTTON, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_VISIBLE
+  CONTROL "Two hours daylight savings", 723, 62, 26, 124, 11,
+          WC_BUTTON, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_VISIBLE
+END
+END
+

@@ -1,0 +1,44 @@
+DLGTEMPLATE 800 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+DIALOG "Position and Distance Calculator", ID_DISTCALC, 9, 11, 265, 125, FS_NOBYTEALIGN |
+       FS_DLGBORDER | WS_VISIBLE | WS_CLIPSIBLINGS | WS_SAVEBITS,
+       FCF_SYSMENU | FCF_TITLEBAR
+BEGIN
+  CONTROL "Click Mouse Button 1 to select a new point; double-click to set new fixed (base) point.",
+                ID_DCBLURB, 10, 91, 241, 23,
+                WC_STATIC, SS_TEXT | DT_LEFT | DT_TOP | DT_WORDBREAK | WS_GROUP | WS_VISIBLE
+  /* Mouse group */
+  CONTROL "Mouse position", ID_DCMGROUP, 10, 73, 235, 17,
+                WC_STATIC, SS_GROUPBOX | WS_GROUP | WS_VISIBLE
+  CONTROL "170ø 33' E", ID_DCMLON, 125, 75, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "90ø 0' N",   ID_DCMLAT, 190, 75, 50, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  /* Points group */
+  CONTROL "Selected points", ID_DCPGROUP, 10, 39, 235, 28,
+                WC_STATIC, SS_GROUPBOX | WS_GROUP | WS_VISIBLE
+  CONTROL "170ø 33' E", ID_DC1LON, 125, 52, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "12xE",       ID_DC1LAT, 190, 52, 50, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "170ø 33' E", ID_DC2LON, 125, 42, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "12xE",       ID_DC2LAT, 190, 42, 50, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  /* Distances */
+  CONTROL "Distance between points:", ID_DCDTEXT, 10, 24, 115, 8,
+                WC_STATIC, SS_TEXT | DT_LEFT  | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "12,345km",    ID_DCDKM,    135, 24, 50, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "12,142miles", ID_DCDMILES, 195, 24, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  /* Buttons */
+  CONTROL "Clear points", ID_DCCLEAR,   10, 4, 75, 13,
+                WC_BUTTON, BS_PUSHBUTTON | WS_TABSTOP | WS_VISIBLE
+  CONTROL "Jetlag",       ID_DCJETLAG,  95, 4, 75, 13,
+                WC_BUTTON, BS_PUSHBUTTON | WS_TABSTOP | WS_VISIBLE
+  CONTROL "Cancel",       ID_DCCANCEL, 180, 4, 75, 13,
+                WC_BUTTON, BS_PUSHBUTTON | BS_DEFAULT | WS_TABSTOP | WS_VISIBLE
+END
+END
+

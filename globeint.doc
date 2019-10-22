@@ -1,0 +1,31 @@
+                                                               PMGlobe 2.16
+PMGlobe: Internal IBM supplementary documentation
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+PMGlobe comes in two versions: PMGLOBE.EXE (16-bit version) and
+PMGLOBE2.EXE (32-bit version).  If you are running OS/2 1.x, you must
+use the 16 bit version.  If you are running OS/2 2.x, then you can use
+either, but the 32-bit version is recommended because it runs up to 3.7
+times faster than the other.  The versions should be functionally
+identical, except that the "About PMGlobe" help panel indicates which
+version you are running.
+
+In either case, only the one file is needed.  Follow the instructions
+that came with your operating system for details on adding new programs
+to your system.
+
+PMGlobe macros can determine which version they are running under by
+using the 'extract versionb' command.
+
+The versions of PMGlobe are source-identical, so fair speed comparisons
+are possible.  However, user interface issues now favour the 32-bit
+version (as this is now available to non-IBM users though the EWS
+(Employee-written-software) program).  16-bit users may seem some
+interference with PM functions while the globe is being redrawn (for
+example, resurfaced icons may not be redrawn immediately).
+
+If you have any questions or suggestions not covered by the PMGlobe
+documentation, please use the PMGLOBE FORUM on the IBMPC disk.
+
+Mike Cowlishaw (MFC at WINVMB, or mfc@vnet.ibm.com).
+                                                                    PMGlobe 2.03

@@ -1,0 +1,71 @@
+/* Build a 'C' long COS routine */
+/* Mike Cowlishaw (MFC at WINVMB)   29 Oct 1991 */
+/* 1998.08.15 .. also write binary table        */
+file='LCOS C G1'
+address command 'ERASE' file
+ 
+call out '/* LongCOS(x), LongSIN(x)                           */'
+call out '/*   X is *1000: -360000 to 360000                   */'
+call out '/*   returns cosine*1000, i.e, 0->1000               */'
+call out '/*   table is indexed by degrees * 10, looked up     */'
+call out '/*   with range 0-900                                */'
+call out '#include <stdio.h>'
+call out '/* shared sine table */'
+call out 'static int table#901#={'
+call maketable
+call out '  };'
+call out 'long lcos(long v) {'
+call out '  int x; x=(int)(v/100L); /* NB no round */'
+call out '  /* x now in range -3600 to 3600 */'
+call out '  if (x<0) x=-x;'
+call out '  /* x now in range 0 to 3600 */'
+call out '  if (x>1800) x=3600-x; /* fold */'
+call out '  /* now 0-1800 (0-180 degrees) */'
+call out '  if (x>900) return (long)(-table#x-900#);'
+call out '  return (long)(table#900-x#);'
+call out '  }; /* lcos */'
+call out '  '
+call out 'long lsin(long v) {'
+call out '  int x; x=(int)(v/100L);'
+call out '  /* x now in range -3600 to 3600 */'
+call out '  if (x<0) x=x+3600;'
+call out '  /* x now in range 0 to 3600 */'
+call out '  if (x>1800) {'
+call out '    x=x-1800;'
+call out '    if (x>900) x=1800-x;'
+call out '    return (long)(-table#x#);}'
+call out '  /* here if 0-1800 (0-180 degrees) */'
+call out '  if (x>900) x=1800-x;'
+call out '  return (long)(table#x#);'
+call out '  }; /* lsin */'
+ 
+call lineout file /* close */
+exit
+ 
+maketable:
+ collect=' '
+ bincollect=''
+ do x=0 to 89.9 by 0.1
+   num=format(sin(x)*1000,,0)
+   bincollect=bincollect||d2c(num, 2)
+   collect=collect num','
+   if length(collect)<70 then iterate
+   call out collect
+   collect=' '
+   end
+collect=collect '1000'  /* Add the 1.000 value */
+call out collect
+ 
+bincollect=bincollect||d2c(1000, 2)
+say 'len' length(bincollect)
+binfile='COS BRCBIN G1'
+address command 'ERASE' binfile
+call lineout binfile, bincollect
+call lineout binfile    /* close */
+ 
+return
+ 
+ 
+ 
+out: call lineout file, arg(1); return
+

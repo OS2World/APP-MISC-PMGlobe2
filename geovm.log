@@ -1,0 +1,99 @@
+========================================================================
+Date: 3 October 91, 10:21:26 EDT
+From: JKRESS   at RALVMG
+To:   MFC at WINVMB
+ 
+Subject: Eyes on Earth
+ 
+Sorry Mike, I do not know the cost of the database.
+ 
+It was extensively used in a recent PBS show about the greenhouse
+effect:  "After the Warming" by David Burke(?), probably produced by the
+BBC.  In the form of a globe (orthographic view) they rotated it until
+the spot of interest appeared.  They also wrapped the flat simple
+cylindrical view onto a globe, and vice-versa, using modern TV graphics
+techniques.
+ 
+Although the original image was supposed to be cloudless, two clouds
+were actually present, in SW Africa and NE Australia.  These have now
+been deleted according to the producers of the data base.
+ 
+Joe Kress
+ 
+========================================================================
+Date: 10 October 91, 10:29:00 PDT
+From: Dean Stuenkel             8-276-8491           STUENKEL at SJMVM7
+To:   MFC at WINVMB
+ 
+Subject: Map
+ 
+I've sent you the file.  The columns are AREA, SEQUENCE, DRAWTYPE,
+LONGITUDE, and LATITUDE.  The geographic points are divided, by no
+particular methodology, between areas A and B.  Areas C, D and E were
+"special" areas for the AS procedure that used this file.  Area C has
+points to draw small circles near the north and south poles.  Area D
+has points for drawing circles of longitude and latitude.  Area E has
+coordinates for drawing an outline circle for a globe image.
+ 
+       Area     Rows
+ 
+         A      1384
+         B      1310
+         C        11
+         D       606
+         E       121
+ 
+My source for this file was another AS demo package called WORMAP PACKAGE
+from the ASDEMOS disk.  Alan Carpenter (CARPENA2 at ASICVM1) might know
+the original source.  The WORMAP file had screen coordinates for graphing
+a Mercator projection; I did sort of an "eyeball unprojection" to get
+lon/lat coordinates; I also made a few corrections and additions.
+ 
+The coordinates aren't particularly accurate or detailed - - they're okay
+for global graphics demos, but DO NOT use them for business, travel or
+defense purposes ;).
+ 
+Regards,  Dean
+=========================================================================
+Date: 10 October 91, 7:55pm BST
+From: Mike Cowlishaw            +44-962-844433 x5349 MFC      at WINVMB
+To:   Alan Carpenter                                 HOS71    at ASICVM1
+ 
+Subject: Maps
+ 
+Well, it's a small world .. after following a long and tortuous path
+through the forums, I end up at WORMAP PACKAGE on ASTOOLS.  Add one
+Alan Carpenter to my nickname list and !whoa! that name and userid
+is already in your NAMES file...
+ 
+So -- the question: I'm looking for a "usable" source of geographic
+(read: world physical) data.  What was the source for the data in
+WORMAP and derivatives?  Is it 'available'?
+ 
+Mike
+----- GEO FORUM appended at 23:40:00 on 90/12/09 GMT (by JKRESS at RALVMG) ----
+Subject: Cloudless Earth
+ 
+The November 1990 issue of Sky & Telescope contains two "maps" of the
+earth made from many NOAA weather satellite photos, but without any grid
+or lettering.  The individual photos were selected for minimum cloud
+cover and any remaining clouds removed pixel-by-pixel.  All areas are
+shown with local summer except for mountains above 10000 feet which are
+winter for snow cover.  The coloring appears natural:  green for
+vegetation, tan for desert, white for snow and ice, and dark blue for
+oceans and lakes.  Because they are photo based, shadings are natural,
+for example silt laden water at the mouths of large rivers is clearly
+visible.  The Arctic ice cap and oceanic islands are also visible.
+ 
+The database contains 4000x8000 pixels (2.7'/pixel) (lat x lon), which
+when displayed without modification forms a simple cylindrical projection
+(pp480-1).  The coordinates are also converted to an orthographic
+projection centered north of the Azores (cover).  The database will be
+used to create GeoSpheres that are seven feet in diameter.  For info write:
+ 
+    Eyes on Earth
+    146 Entrada Dr.
+    Santa Monica, CA 90402
+ 
+Joe Kress
+

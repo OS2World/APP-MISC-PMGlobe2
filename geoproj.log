@@ -1,0 +1,145 @@
+----- GEO FORUM appended at 22:44:53 on 90/12/06 GMT (by JKRESS at RALVMG) ----
+Subject: Cylindrical Map Projections
+Ref:     Append at 16:12:49 on 90/11/26 GMT (by RHODGES at RALYDPD4)
+ 
+The UTM maps (6 degrees per side) could be called from a world map which
+thus serves as an index map.  The Mercator is an example of a cylindrical
+map projection, but the equirectangular is simpler, requiring only a
+constant times the stored lon/lat coordinates (no transcendental
+calculations), although all need some coordinate conversion in a zoom
+application if the larger scales need to be accurate.
+ 
+Because cylindrical projections display the poles as horizontal straight
+lines, they have excessive distortion in the polar regions.  The list
+below is in order of decreasing area distortion and increasing shape
+distortion.  Both the Miller and the equirectangular achieve a balance.
+ 
+In the formulas, R is the radius of the earth at the map scale and lon
+and lat are in degrees.  The map center (x=0, y=0) is the intersection
+of the central meridian lon0 and the equator.  The inverse formulas are
+easily derived by isolating lon or lat, applying inverse transcendental
+functions if necessary, like arctan for tan and exp for ln.
+ 
+To fit the map into your screen or window, the aspect ratio, width/height,
+can be controlled by N which is cos(lat1) where lat1 are the standard
+parallels having true scale (Miller and Mercator have true scale at the
+equator).  The Mercator's aspect ratio is determined by the maximum N &
+S latitudes displayed, which can also control the aspect ratios of the
+other projections.
+ 
+Miller:
+   Becomes the Mercator if N=1, but the area distortion is reduced and
+   the poles can be shown if N<1.  Miller recommended N=.8
+      x = (R*pi/180)*(lon - lon0)     y = R*ln(tan(N*lat/2 + 45))/N
+ 
+Equirectangular:
+   Less area distortion than the Miller at the expense of more shape
+   distortion.  Becomes the simple cylindrical if N=1.
+   Commonly used as an index map to other maps in a collection.
+      x = (R*pi/180)*(lon - lon0)*N   y = (R*pi/180)*lat
+ 
+Equal-Area:
+   Used when areas must be in proper proportion, but then polar shapes
+   become quite distorted, being compressed N-S and stretched E-W.
+   The Peters also has noticeable N-S stretching of equatorial shapes.
+   N: Lambert=1, Behrmann=.866, Edwards=.794, Peters=.707
+      x = (R*pi/180)*(lon - lon0)*N   y = R*sin(lat)/N
+ 
+Joe Kress
+----- GEO FORUM appended at 16:31:39 on 90/09/07 GMT (by JKRESS at RALVM31) ---
+Subject:  Map projections
+Ref:      Append at 21:19:08 on 90/08/03 GMT (by CRENSHAW at RALVMIS5)
+ 
+ An excellent  discussion of map projections  occurs in recent  publications of
+ the United States Geological Survey:
+ 
+ USGS Professional Paper 1453:
+    "An album of map projections", John P. Synder and Phillip M. Vosland, 1989
+    Depicts 90 map projections (each almost page size), discusses their
+    advantages and disadvantages, and gives forward equations from latitude
+    and longitude on a sphere to x/y coordinates on a plane.
+ USGS Professional Paper 1395:
+    "Map projections--a working manual", John P. Snyder, 1987
+    Discusses the more important projections, presents the forward and inverse
+    equations from/to a sphere or an ellipsoid.
+ USGS Bulletin 1629:
+    "Computer-Assisted Map Projection Research", John P. Snyder, 1985
+    Discusses efficient transfer of data from one projection to another using
+    polynomial approximations, and minimizing the distortion of projections
+    using least squares approximations.
+ 
+ Also: "The World in Perspective", Frank Canters and Hugo Decleir, 1989
+    68 world projections are discussed, depicted, and their equations are
+    presented.  They are compared via several distortion parameters.
+    No projection of the entire globe is completely satisfactory.
+ 
+ The azimuthal (or zenithal) class of projections  is good for general use from
+ the largest  scale quadrangles to  maps of a  hemisphere.  It  uses projection
+ onto  a plane  tangent  to  the sphere  at  some point.    The  origin of  the
+ rectangular coordinates on  the plane (x=0, y=0) corresponds to  the center of
+ the map at (lat1,  lon0).  The following formulas place  no restriction on the
+ map center, which  could be polar (lat1  = +/-90 degrees), equatorial  (lat1 =
+ 0), or oblique (lat1 somewhere in between).
+ 
+ x = R K cos lat sin (lon - lon0)
+ y = R K (cos lat1 sin lat - sin lat1 cos lat cos (lon - lon0))
+ 
+   lat   north latitude (south minus)
+   lon   east longitude (west minus)
+   lat1  north latitude of central point (south minus)
+   lon0  east longitude of central meridian (west minus) (applicable only
+         between the north pole (top) and the south pole (below))
+   R     radius of sphere at map scale
+   K     scale factor perpendicular to radius from map center
+ 
+   Y axis lies along the central meridian lon0, y increasing north
+   X axis is perpendicular to Y axis at (lat1, lon0), x increasing east
+ 
+   Vertical Perspective:  K = (P - 1)/(P - cos c)
+   Orthographic:          K = 1
+   Equidistant:           K = c/sin c        (K = 1 if c = 0)
+   Equal-Area:            K = SQRT(2/(1 + cos c))
+ 
+   cos c = sin lat1 sin lat + cos lat1 cos lat cos (lon - lon0)
+      or for greater accuracy if c rather than cos c is needed:
+   sin (c/2) = SQRT( (sin ((lat - lat1)/2))**2
+                     + cos lat1 cos lat (sin ((lon - lon0)/2))**2 )
+   c is the great circle distance from the map center in radians
+ 
+ The  Vertical Perspective  is the  general view  of  the earth  from a  single
+ perspective point.  P is the  perspective radius normalized to earth's radius,
+ positive on the side of the tangential plane.  The radius of a spherical earth
+ with the same  surface area as that of  the actual ellipsoid is 6371  km.  The
+ outline maps on  photos from weather satellites  are a view of  the earth from
+ geosynchronous orbit at a radius  of 42172 km,  P = 6.62, cos c > 1/P.  If the
+ perspective is at  infinity then the Orthographic  projection results, causing
+ the  planar image  to look  like a  true globe  to the  mind.   Here, for  one
+ hemisphere, cos c > 0.  In both cases, do not limit cos c to get a transparent
+ earth effect.  Two low distortion perspectives of a hemisphere or more are the
+ La Hire,  P = -1.707, cos c > 0,  and the Clarke Twilight, P = -1.27,  c < 108
+ degrees.
+ 
+ If the perspective is  from the earth's surface opposite the  map center, then
+ the Stereographic projection  results, which is conformal,  meaning the shapes
+ and angles at every point are true (P = -1, cos c > 0).  If the perspective is
+ from the center of the earth, then  the Gnomonic projection results, which has
+ the unique  property that all straight  lines are great circles,  although its
+ scale is severely distorted  (P = 0, cos c > 0).   Two related non-perspective
+ projections are  the Azimuthal Equidistant, where  all distances from  the map
+ center are true, and the Lambert Azimuthal  Equal-Area, where all areas are in
+ proper proportion.  For low distortion, limit both of these to one hemisphere,
+ cos c > 0.   Two hemispheres  side by  side is a  suitable  projection  of the
+ world.  Of course, (x, y) limits  apply when displaying large scale maps whose
+ spherical limits go way beyond the screen edges.
+ 
+ The distortion caused  by displaying the resulting planar  map on conventional
+ monitors  having slightly  spherical screens  is  substantial, so  ellipsoidal
+ formulas can be safely ignored.   However, the ellipsoidal formulas are needed
+ for driving  accurate plotters  at large scales  above  1:100 000, and improve
+ accuracy  for scales  down to  1:5 000 000.  At smaller  scales,  the inherent
+ sphere to plane distortion  is much greater.  The inverse  formulas are needed
+ when the user points to a spot on the map with a cursor or mouse.
+ 
+ Joe Kress
+ 
+

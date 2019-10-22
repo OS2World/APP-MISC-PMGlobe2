@@ -1,0 +1,18 @@
+/* Spin the globe at current latitude and sun longitude offset */
+'extract viewlat viewlon sunlat sunlon' /* get current */
+offset=sunlon-viewlon                   /* relative sun position */
+
+do forever
+  'wait +0:1:05'                        /* redraw every 10 minutes */
+  'extract sunlon'                      /* get new sun position */
+  viewlon=sunlon-offset                 /* calculate new viewlon */
+  if viewlon<-180 then                  /* if wrapped past dateline.. */
+    viewlon=viewlon+360                 /* .. adjust to valid */
+   else if viewlon>180 then             /* .. */
+    viewlon=viewlon-360                 /* .. */
+  'set viewlon' viewlon                 /* newview */
+  end
+
+
+
+

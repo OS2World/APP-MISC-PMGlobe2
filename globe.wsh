@@ -1,0 +1,67 @@
+* Globe WIBNI list
+
+* Top o'the list
+
+     'Solar' and 'Eclipse' standard views
+
+* Maybe's
+
+     Nautical miles
+     Jetlag calculator
+     Updated distance from fixed point as mouse moves?
+     How long to travel distance at speed X?
+     Different colours for some lines (circles, equator)
+     "opposite" (180ø diametric) view
+
+* Probably not
+
+     Background colour <= desktop colour
+     Double globe -- see back as well as front
+     Query marks
+     Shade 'prime shift' band
+     Snap to fixed point? (No: better use for button)
+     Pop-to-top (inverse of desktop)
+     Local time shown on mouse click
+     Country borders
+     Zoom in
+     How many hours of daylight at point X (a) whole day (b) remaining
+     Topographical database/gazetteer
+     Twilight lines shown dotted
+     Perspective (closer viewpoints)
+
+* Done
+
+1.10 Save window size & position
+     DistCalc back to be an Object window
+     Background/desktop
+1.11 Save fixed point across invocations
+1.12 Grid colours other than red
+1.13 15-degree longitude lines
+     Update (add 'current') to timezone info/help
+     Dark side of earth black ('deep space')
+1.14 Just equator
+1.15 Twilight zone
+     Restore settings & windows
+1.55 Mark and Labelling mechanism
+       (Cities, cities lit on dark side of the earth)
+     Marker for fixed point
+     Different sized blobs for different population cities
+     Saved views or settings (more than one set, saved by name)
+1.56 Message box
+     Set a different time/date
+     Accelerated time (demo mode)
+1.70 Independent map and features
+1.71 Colour subsystem
+     Allow 'Desktop' to not 'Fill screen'
+1.75 Q DIAMETER, QSET MARGIN, QSET IDLEDRAW
+     Selectively remove marks
+     Border around square window
+     Marker for sun-overhead
+     Clear settings to default option
+1.85 More colour control over displayed map
+2.02 Timeclocks on markers
+2.10 Distance line on map
+     Graphics lines
+2.15 'No menu bar' option (with popup menu)
+2.16 Run macro dialog
+2.19 'No title' option

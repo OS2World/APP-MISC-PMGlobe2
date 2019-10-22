@@ -1,0 +1,14 @@
+/* ORIGIN.PMG -- Show the origin in a Large font */
+'font classic size 18 colour red face Helvetica Italic'
+'set font classic'
+'mark 0 0 y centre clock 0 label The Origin, GMT'
+exit
+
+/* OFFSET(seconds) -- convert winter GMT offset to current */
+/* Answer is returned in seconds */
+offset: procedure
+  arg hours .                             /* (Unchecked) */
+  'extract dayoffset'                     /* get local summertime offset */
+  if dayoffset='UNKNOWN' then dayoffset=0 /* just in case */
+  return hours*3600+dayoffset             /* convert to seconds and adjust */
+

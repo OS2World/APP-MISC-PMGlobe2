@@ -1,0 +1,29 @@
+/* Test some graphics */
+'gerase'
+'set labels off'; 'set clocks off'
+'extract version'
+'set title PMGlobe -' version '(GT)'
+
+'set drawcolor red'
+'gline 51o30 0'
+'gline 25o00 -45'
+'gline     0  0'
+'gmove    60  0'
+'gline   -60 179'
+
+'set drawcolor white'
+'gmove     0   0'
+'gline     0 180'
+'gmove    90   0'
+'gline   -90   0'
+'gmove    45  90'
+'gline   -45 -90'
+
+'Set drawcolor green'
+'gmove  51o30    0'      /* London */
+'gline  37.8  -122.4'    /* San Francisco */
+'gline  35.7   139.8'    /* Tokyo */
+'gline -33.7   151.3'    /* Sydney */
+'gline  51o30    0'
+
+

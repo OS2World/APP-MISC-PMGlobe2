@@ -1,0 +1,14 @@
+
+/* See how deep we can go */
+arg n; if n='' then n=1
+say 'Macro depth' n
+if n=5 then do
+  say 'waiting...'
+  'wait +10'
+  end
+
+
+'macro tempdeep' n+1
+if rc<>0 then say "Deep: rc was" rc
+exit rc
+

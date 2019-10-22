@@ -1,0 +1,426 @@
+/* ------------------------------------------------------------------ */
+/* GLOBE.RC: Resource definition file for GLOBE                       */
+/* ------------------------------------------------------------------ */
+/* Copyright (c) IBM Corporation, 1991, 1994                          */
+/* Author: Mike Cowlishaw                                             */
+
+#include <os2.h>
+#include "globepm.h"               /* defines that we need */
+
+ICON    ID_FRAMERC  globe.ico
+POINTER ID_GLOBEPTR globe.ptr
+
+MENU ID_FRAMERC
+  BEGIN
+  SUBMENU      "~Options",                 ID_OPTIONS
+    BEGIN
+    /* Letters in use in uppercase: */
+    /* ABCDEF HI  LMNOPQRSTU  X Z */
+    /* abcdefghijklmnopqrstuvwxyz */
+    MENUITEM   "~Help about Options",      ID_HELPOPTS
+    MENUITEM   SEPARATOR
+    MENUITEM   "~Run macro...",            ID_RUNMAC
+    MENUITEM   "Halt macro",               ID_HALTMAC
+    MENUITEM   SEPARATOR
+    MENUITEM   "Make window ~square",      ID_SQUARE
+    MENUITEM   "Make ~full screen",        ID_FULL
+    MENUITEM   "Make ~quarter screen",     ID_QUARTER
+    MENUITEM   "Make ~desktop",            ID_DESKTOP
+    MENUITEM   SEPARATOR
+    MENUITEM   "Show ~position/distance calculator", ID_SHOWDC
+    MENUITEM   "~Cross-hair cursor",       ID_CROSSHAIR
+    MENUITEM   "Draw at ~low priority",    ID_IDLEDRAW
+    MENUITEM   "Use title ~bar",           ID_TITLEBAR
+    MENUITEM   "Use me~nu bar",            ID_MENUBAR
+    MENUITEM   SEPARATOR
+    MENUITEM   "Set time~zone...",         ID_TIMEZONE
+    SUBMENU    "Set refresh ~time",        ID_REFRESH
+      BEGIN
+      MENUITEM "~Help about refresh time", ID_HELPREF
+      MENUITEM SEPARATOR
+      MENUITEM "~No delay",                ID_REF0
+      MENUITEM "One ~minute",              ID_REF1
+      MENUITEM "~5 minutes",               ID_REF5
+      MENUITEM "~10 minutes",              ID_REF10
+      MENUITEM "~Quarter hour",            ID_REF15
+      MENUITEM "~20 minutes",              ID_REF20
+      MENUITEM "~30 minutes",              ID_REF30
+      MENUITEM "~One hour",                ID_REF60
+      END
+    MENUITEM   SEPARATOR
+    MENUITEM   "S~ave settings",           ID_SAVESET
+    MENUITEM   "R~estore settings",        ID_RESTSET
+    MENUITEM   "Reset settings to defa~ults", ID_DEFSET
+    MENUITEM   "Save wind~ows",            ID_SAVEPOS
+    MENUITEM   "Restore w~indows",         ID_RESTPOS
+    MENUITEM   SEPARATOR
+    MENUITEM   "Minimize",                 ID_MINIMIZE
+    MENUITEM   "Maximize",                 ID_MAXIMIZE
+    MENUITEM   "Restore",                  ID_RESTORE
+    MENUITEM   "Close",                    ID_QUIT
+    END
+  SUBMENU      "~Views",                   ID_VIEW
+    BEGIN
+    MENUITEM   "~Help about views",        ID_HELPVIEWS
+    MENUITEM   SEPARATOR
+    SUBMENU    "~Standard views",          ID_POSITION
+      BEGIN
+      MENUITEM "~Help about standard views", ID_HELPSTAN
+      MENUITEM SEPARATOR
+      MENUITEM "~Europe & Africa (0ø)",    ID_POS0
+      MENUITEM "~Americas (90øW)",         ID_POS90W
+      MENUITEM "~India & Asia (90øE)",     ID_POS90E
+      MENUITEM "~Pacific (180ø)",          ID_POS180
+      MENUITEM "~North Pole",              ID_POSNP
+      MENUITEM "~South Pole",              ID_POSSP
+      END
+    SUBMENU    "~Grid line choices",       ID_GRID
+      BEGIN
+      MENUITEM "~Help about grid lines",   ID_HELPGRID
+      MENUITEM SEPARATOR
+      SUBMENU  "Grid ~color",              ID_CGRID
+        BEGIN
+        MENUITEM "~Red grid lines",          ID_CGRED
+        MENUITEM "~Green grid lines",        ID_CGGREEN
+        MENUITEM "~Blue grid lines",         ID_CGBLUE
+        MENUITEM "~Yellow grid lines",       ID_CGYELLOW
+        MENUITEM "~Pink grid lines",         ID_CGPINK
+        MENUITEM "~Cyan grid lines",         ID_CGCYAN
+        MENUITEM SEPARATOR
+        MENUITEM "Dark red grid lines",      ID_CGDARKRED
+        MENUITEM "Dark green grid lines",    ID_CGDARKGREEN
+        MENUITEM "Dark blue grid lines",     ID_CGDARKBLUE
+        MENUITEM "Brown grid lines",         ID_CGBROWN
+        MENUITEM "Purple grid lines",        ID_CGPURPLE
+        MENUITEM "Dark cyan grid lines",     ID_CGDARKCYAN
+        MENUITEM SEPARATOR
+        MENUITEM "~White grid lines",        ID_CGWHITE
+        MENUITEM "Gray grid lines",          ID_CGGRAY
+        MENUITEM "Blac~k grid lines",        ID_CGBLACK
+        END
+      MENUITEM SEPARATOR
+      MENUITEM "Show ~all grid lines",     ID_GRIDALL
+      MENUITEM "Show ~no grid lines",      ID_GRIDNONE
+      MENUITEM SEPARATOR
+      MENUITEM "Show Longitude every 10ø", ID_GRIDLON10
+      MENUITEM "Show Longitude every 15ø", ID_GRIDLON15
+      MENUITEM "Show Longitude every 30ø", ID_GRIDLON30
+      MENUITEM "Show Latitude every 10ø",  ID_GRIDLAT10
+      MENUITEM "Show Latitude every 15ø",  ID_GRIDLAT15
+      MENUITEM "Show Latitude every 30ø",  ID_GRIDLAT30
+      MENUITEM "Show Equator and poles",   ID_GRIDEQ
+      MENUITEM "Show ~polar (Arctic and Antarctic) circles", ID_GRIDARCTIC
+      MENUITEM "Show ~tropics of Cancer and Capricorn", ID_GRIDTROPIC
+      END
+    MENUITEM   "Snap to e~quator",         ID_POSEQ
+    MENUITEM   "Snap to G~reenwich",       ID_POSGM
+    MENUITEM   SEPARATOR
+    MENUITEM   "Allow ~mouse button 2",    ID_POSMB2
+    END
+  SUBMENU      "~Lighting",                ID_LIGHT
+    BEGIN
+    MENUITEM   "~Help about lighting",     ID_HELPLIGHT
+    MENUITEM   SEPARATOR
+    MENUITEM   "~Sunlight",                ID_SUN
+    MENUITEM   "Sunlight from s~pace",     ID_SPACE
+    MENUITEM   "Sunlight and sta~rlight",  ID_STAR
+    MENUITEM   "~3-D",                     ID_3D
+    MENUITEM   SEPARATOR
+    SUBMENU    "~Twilight setting",        ID_TWILIGHT
+      BEGIN
+      MENUITEM "~Help about twilight",            ID_HELPTWI
+      MENUITEM SEPARATOR
+      MENUITEM "~Theoretical sunrise/set\t(0ø)",  ID_TWI0
+      MENUITEM "~Ideal sunrise/set\t(0ø50')",     ID_TWIZ50
+      MENUITEM "~Civil twilight\t(6ø)",           ID_TWI6
+      MENUITEM "~Nautical twilight\t(12ø)",       ID_TWI12
+      MENUITEM "~Astronomical twilight\t(18ø)",   ID_TWI18
+      END
+    SUBMENU    "~Land color",              ID_CLAND
+      BEGIN
+      MENUITEM "~Help about color of land and water", ID_HELPCOLOUR
+      MENUITEM SEPARATOR
+      MENUITEM "~Red land",                  ID_CLRED
+      MENUITEM "~Green land",                ID_CLGREEN
+      MENUITEM "~Blue land",                 ID_CLBLUE
+      MENUITEM "~Yellow land",               ID_CLYELLOW
+      MENUITEM "~Pink land",                 ID_CLPINK
+      MENUITEM "~Cyan land",                 ID_CLCYAN
+      MENUITEM SEPARATOR
+      MENUITEM "~White land",                ID_CLWHITE
+      MENUITEM "Gray land",                  ID_CLGRAY
+      MENUITEM "Blac~k land",                ID_CLBLACK
+      END
+    SUBMENU    "~Water (lake and sea) color",     ID_CSEA
+      BEGIN
+      MENUITEM "~Help about color of land and water", ID_HELPCOLOUR
+      MENUITEM SEPARATOR
+      MENUITEM "~Red water",                 ID_CSRED
+      MENUITEM "~Green water",               ID_CSGREEN
+      MENUITEM "~Blue water",                ID_CSBLUE
+      MENUITEM "~Yellow water",              ID_CSYELLOW
+      MENUITEM "~Pink water",                ID_CSPINK
+      MENUITEM "~Cyan water",                ID_CSCYAN
+      MENUITEM SEPARATOR
+      MENUITEM "~White water",               ID_CSWHITE
+      MENUITEM "Gray water",                 ID_CSGRAY
+      MENUITEM "Blac~k water",               ID_CSBLACK
+      END
+    SUBMENU    "~Background color",        ID_CBACK
+      BEGIN
+      MENUITEM "~Help about background color",    ID_HELPBACK
+      MENUITEM SEPARATOR
+      MENUITEM "~Red background",          ID_CBRED
+      MENUITEM "~Green background",        ID_CBGREEN
+      MENUITEM "~Blue background",         ID_CBBLUE
+      MENUITEM "~Yellow background",       ID_CBYELLOW
+      MENUITEM "~Pink background",         ID_CBPINK
+      MENUITEM "~Cyan background",         ID_CBCYAN
+      MENUITEM SEPARATOR
+      MENUITEM "Dark red background",      ID_CBDARKRED
+      MENUITEM "Dark green background",    ID_CBDARKGREEN
+      MENUITEM "Dark blue background",     ID_CBDARKBLUE
+      MENUITEM "Brown background",         ID_CBBROWN
+      MENUITEM "Purple background",        ID_CBPURPLE
+      MENUITEM "Dark cyan background",     ID_CBDARKCYAN
+      MENUITEM SEPARATOR
+      MENUITEM "~White background",        ID_CBWHITE
+      MENUITEM "Gray background",          ID_CBGRAY
+      MENUITEM "Pale gray background",     ID_CBPALEGRAY
+      MENUITEM "Blac~k background",        ID_CBBLACK
+      END
+    END
+  SUBMENU      "~Help",                    ID_HELP, MIS_BUTTONSEPARATOR
+    BEGIN
+    MENUITEM   "~About PMGlobe",             ID_HELPABOUT
+    MENUITEM   "~Introduction to PMGlobe",   ID_HELPINTRO
+    MENUITEM   SEPARATOR
+    MENUITEM   "Help about ~options",                 ID_HELPOPTS
+    MENUITEM   "Help about ~views",                   ID_HELPVIEWS
+    MENUITEM   "Help about ~lighting",                ID_HELPLIGHT
+    MENUITEM   "Help about ~twilight",                ID_HELPTWI
+    MENUITEM   "Help about ~background color",        ID_HELPBACK
+    MENUITEM   "Help about ~standard views",          ID_HELPSTAN
+    MENUITEM   "Help about ~grid lines",              ID_HELPGRID
+    MENUITEM   "Help about ~refresh time",            ID_HELPREF
+    MENUITEM   "Help about ~macros",                  ID_HELPMACRO
+    MENUITEM   "Help about ~color of land and water", ID_HELPCOLOUR
+    END
+  END
+
+ACCELTABLE ID_FRAMERC
+  BEGIN
+  VK_F3,    ID_QUIT,      VIRTUALKEY
+  VK_ESC,   ID_COMMDLG,   VIRTUALKEY
+  VK_BREAK, ID_HALTMAC,   VIRTUALKEY, CONTROL
+  END
+
+/* String table for Help panels */
+STRINGTABLE
+  BEGIN
+  ID_HELPABOUT   "Help about %s %s"
+  ID_HELPABOUT+1 "PMGlobe displays a globe with various lighting and view effects.
+
+Select 'Help' for more details, or see PMGLOBE.DOC.
+
+Copyright (c) IBM Corporation, 1991, 1994.  All rights reserved.
+
+Written by Mike Cowlishaw,
+IBM UK Laboratories."
+  ID_HELPOPTS    "Help about Options"
+  ID_HELPOPTS+1  "'Make square' makes the window square.
+'Make full/quarter screen' makes the window fill all or part of the screen.
+'Make desktop' pushes to background.
+'Close' leaves PMGlobe.
+
+(Please see PMGLOBE.DOC for the others.)"
+  ID_HELPLIGHT    "Help about lighting"
+  ID_HELPLIGHT+1  "The simplest is flat lighting.
+
+'Sunlight' shows day and night.
+
+'.. from space' makes dark side black.
+
+'.. and starlight' shows land on the dark side.
+
+'3-D' adds three-dimensional shading.
+
+(Other selections have their own Help.)"
+  ID_HELPSTAN   "Help about standard views"
+  ID_HELPSTAN+1 "PMGlobe provides a number of 'standard' views of the world, which you can select from a menu.
+
+In addition, you can normally select any point to be the centre of view by clicking on it with mouse button 2."
+  ID_HELPVIEWS    "Help about views"
+  ID_HELPVIEWS+1  "'Allow mouse button 2' lets you rotate and tilt the globe so selected point is centre of view.
+
+'Snap to equator' sets Latitude 0ø (faster draw).
+
+'Snap to Greenwich' sets Longitude 0ø.
+
+(Other selections have their own Help.)"
+  ID_HELPREF     "Help about refresh time"
+  ID_HELPREF+1   "When a 'sunlight' view has been selected, the globe will be redrawn (refreshed) at intervals to keep the display up-to-date.
+
+You can set the refresh time so the redraw is started as soon as the globe is complete, or it can be delayed up to an hour."
+  ID_HELPGRID    "Help about grid lines"
+  ID_HELPGRID+1  "You can choose which (if any) grid lines are displayed, and the color to be used for them.
+
+Lines of longitude, and the equator, are shown by a dot every 1, 2, or 5 degrees
+(other lines are shown with fewer dots)."
+/* Adding grid lines will not cause a complete redraw, but removing them will.*/
+  ID_HELPINTRO   "Introduction to PMGlobe"
+  ID_HELPINTRO+1 "This program shows a globe, viewed from any direction, and with several lighting effects.
+
+The best pictures take some time to draw, especially for large globes, but be sure to try 'Sunlight', with or without '3-D'."
+  ID_HELPTWI     "Help about twilight"
+  ID_HELPTWI+1   "This setting controls the width of the twilight band, on the dark side of the earth, which is still lit after sunset or before sunrise.
+
+Please see documentation for more details."
+  ID_HELPBACK    "Help about background color"
+  ID_HELPBACK+1  "The background color alters the appearance of the window around the globe.
+
+Black is the most effective, but may be too different from other windows."
+  END
+STRINGTABLE
+  BEGIN
+  ID_HELPMACRO   "Help about macros"
+  ID_HELPMACRO+1 "When a 'macro' (a program for PMGlobe) is running, the macro controls PMGlobe, so 'Views' and 'Lighting' cannot be selected.
+
+Select 'Halt macro' to stop the macro and return to standard operation."
+  ID_HELPCOLOUR  "Help about colors of land and water"
+  ID_HELPCOLOUR+1 "You may select the color for both land and for water (lake and sea) areas.
+
+If you choose the same color for both, it will be difficult to see the land/water boundary."
+  END
+
+
+DLGTEMPLATE 800 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+/* Initally position to left of globe, and lowered */
+DIALOG "PMGlobe Position/Distance Calculator", ID_DISTCALC, 50, 50, 225, 120,
+       FS_NOBYTEALIGN | FS_DLGBORDER | WS_CLIPSIBLINGS | WS_SAVEBITS,
+       FCF_SYSMENU | FCF_TITLEBAR
+BEGIN
+  CONTROL "Click Mouse Button 1 to select a new point, or double-click to set new base (fixed) point.",
+                ID_DCBLURB, 10, 93, 205, 23,
+                WC_STATIC, SS_TEXT | DT_LEFT | DT_TOP | DT_WORDBREAK | WS_GROUP | WS_VISIBLE
+  /* Mouse group */
+  /* Note: these groups are higher than look nice to stop depeditation */
+  /*   of the top-line text by included text. */
+  CONTROL "Mouse position", ID_DCMGROUP, 10, 75, 205, 21,
+                WC_STATIC, SS_GROUPBOX | WS_GROUP | WS_VISIBLE
+  CONTROL "",           ID_DCMLAT,   85, 79,  60,  8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",           ID_DCMLON,  150, 79,  60,  8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  /* Points group */
+  CONTROL "Selected points", ID_DCPGROUP, 10, 42, 205, 30,
+                WC_STATIC, SS_GROUPBOX | WS_GROUP | WS_VISIBLE
+  CONTROL "",           ID_DC1TEXT,    15, 55, 65, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",           ID_DC1LAT,     85, 55, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",           ID_DC1LON,    150, 55, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",           ID_DC2TEXT,    15, 46, 65, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",           ID_DC2LAT,     85, 46, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",           ID_DC2LON,    150, 46, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  /* Distances */
+  CONTROL "",            ID_DCDTEXT,   10, 31, 65, 8,
+                WC_STATIC, SS_TEXT | DT_LEFT  | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",            ID_DCDKM,     85, 31, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",            ID_DCDMILES, 150, 31, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+
+  CONTROL "",            ID_DCTTEXT,   10, 21, 65, 8,
+                WC_STATIC, SS_TEXT | DT_LEFT  | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",            ID_DCTKM,     85, 21, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  CONTROL "",            ID_DCTMILES, 150, 21, 60, 8,
+                WC_STATIC, SS_TEXT | DT_RIGHT | DT_TOP | WS_GROUP | WS_VISIBLE
+  /* Buttons */
+  CONTROL "Reset",       ID_DCRESET,   10, 4, 55, 13,
+                WC_BUTTON, BS_PUSHBUTTON | WS_TABSTOP | WS_VISIBLE
+                | BS_NOPOINTERFOCUS
+  CONTROL "Track",       ID_DCTRACK,   85, 4, 55, 13,
+                WC_BUTTON, BS_PUSHBUTTON | WS_TABSTOP | WS_VISIBLE | WS_DISABLED
+                | BS_NOPOINTERFOCUS
+  CONTROL "Cancel",      ID_DCCANCEL, 160, 4, 55, 13,
+                WC_BUTTON, BS_PUSHBUTTON | BS_DEFAULT | WS_TABSTOP | WS_VISIBLE
+                | BS_NOPOINTERFOCUS
+END
+END
+
+DLGTEMPLATE ID_COMMDLG MOVEABLE
+BEGIN
+DIALOG "PMGlobe command", ID_COMMDLG,                  50, 49, 275, 55,
+     FS_NOBYTEALIGN | WS_SAVEBITS, FCF_SYSMENU | FCF_TITLEBAR
+  BEGIN
+  LTEXT "Startup command running...",  ID_COMMDLGTEXT, 10, 39, 200,  8
+  ENTRYFIELD ""               , ID_COMMDLGNAME,        10, 24, 256,  8 ,
+             ES_MARGIN | ES_AUTOSCROLL| WS_TABSTOP
+  AUTOCHECKBOX  "Redraw after", ID_COMMDLGDRAW,        10,  6,  70, 10 ,
+             BS_NOCURSORSELECT
+  AUTOCHECKBOX  "Macros",       ID_COMMDLGMAC,         85,  6,  50, 10 ,
+             BS_NOCURSORSELECT
+  DEFPUSHBUTTON "OK",           DID_OK,               142,  4,  55, 14 ,
+             BS_NOCURSORSELECT
+  PUSHBUTTON    "Cancel",       DID_CANCEL,           212,  4,  55, 14 ,
+             BS_NOCURSORSELECT
+  PUSHBUTTON    "Halt Macro",   ID_COMMDLGHALT,       212, 37,  55, 14 ,
+             BS_NOCURSORSELECT
+  END
+END
+
+DLGTEMPLATE ID_TZDLG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+  DIALOG  "Set Time Zone", ID_TZDLG, 50, 50, 225, 147,
+          FS_NOBYTEALIGN | FS_DLGBORDER |
+          WS_VISIBLE | WS_CLIPSIBLINGS | WS_SAVEBITS,
+          FCF_TITLEBAR | FCF_SYSMENU
+  BEGIN
+  CONTROL "", ID_TZLIST, 8, 7, 45, 137,
+          WC_LISTBOX, WS_TABSTOP | WS_VISIBLE
+  CONTROL "Please select a time zone from the list.  Or, enter your local winter offset from GMT, select current daylight saving hours if needed, and enter time zone abbreviation:",
+          ID_TZTEXT1, 63, 104, 155, 40,
+          WC_STATIC, SS_TEXT | DT_LEFT | DT_TOP |
+          DT_WORDBREAK | WS_VISIBLE
+
+  CONTROL "0", ID_TZHOURS, 65, 88, 32, 8,
+          WC_ENTRYFIELD, ES_LEFT | ES_MARGIN | WS_TABSTOP | WS_VISIBLE
+  CONTROL "[+/-] hours:minutes ahead of GMT",           ID_TZTEXT2, 106, 82, 112, 18,
+          WC_STATIC, SS_TEXT | DT_LEFT | DT_TOP | DT_WORDBREAK | WS_VISIBLE
+
+  CONTROL "", ID_TZZONE,  65,  27, 32, 8,
+          WC_ENTRYFIELD, ES_LEFT | ES_MARGIN | WS_TABSTOP | WS_VISIBLE
+  CONTROL "Time zone abbreviation (3 or 4 characters)", ID_TZTEXT3, 106, 22, 112, 18,
+          WC_STATIC, SS_TEXT | DT_LEFT | DT_TOP | DT_WORDBREAK | WS_VISIBLE
+
+  CONTROL "No daylight saving in effect", ID_TZDAY0, 63, 74, 155, 10,
+          WC_BUTTON, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_VISIBLE
+          | BS_NOPOINTERFOCUS | WS_GROUP
+  CONTROL "30 minutes of daylight saving",ID_TZDAY1, 63, 63, 155, 10,
+          WC_BUTTON, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_VISIBLE
+          | BS_NOPOINTERFOCUS
+  CONTROL "One hour of daylight saving",  ID_TZDAY2, 63, 52, 155, 10,
+          WC_BUTTON, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_VISIBLE
+          | BS_NOPOINTERFOCUS
+  CONTROL "90 minutes <not visible>",     ID_TZDAY3, 63,  0, 155, 10,
+          WC_BUTTON, BS_AUTORADIOBUTTON | WS_TABSTOP
+          | BS_NOPOINTERFOCUS
+  CONTROL "Two hours of daylight saving", ID_TZDAY4, 63, 41, 155, 10,
+          WC_BUTTON, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_VISIBLE
+          | BS_NOPOINTERFOCUS
+
+  CONTROL "OK",      ID_TZOK,      64, 6, 50, 13,
+          WC_BUTTON, BS_PUSHBUTTON | BS_DEFAULT | WS_TABSTOP | WS_VISIBLE
+          | BS_NOPOINTERFOCUS
+  CONTROL "Cancel",  ID_TZCANCEL, 168, 6, 50, 13,
+          WC_BUTTON, BS_PUSHBUTTON | WS_TABSTOP | WS_VISIBLE
+          | BS_NOPOINTERFOCUS
+  END
+END

@@ -1,0 +1,47 @@
+
+/*---------------------------------------------------------------------+
+                            IBM Internal Use Only
+                   (C) Copyright IBM Corporation 1992
+
+    SPINIT2: Spin the globe rather quickly.
+
+             Spins the globe as rapidly as possible.  This is most
+             effective when the globe itself is very small, say less
+             than 1 inch wide on an 8514 in BGA mode under OS/2 2.0
+             on a 386 machine (e.g., when minimized to desktop).
+             The following settings are worth trying:
+
+             o black or pale gray background
+             o land color yellow
+             o sun and starlight
+             o 3-D
+
+    Author:  MFC, based on SPINIT by W. Eliot Kimber
+    Date:    25 June 1992                                           +-*/
+    Version="1.0"/*
++---------------------------------------------------------------------*/
+lonstep = 10  /* degrees to rotate each time */
+
+"SET TITLE Rotating PMGlobe"
+"SET SHOWDRAW   OFF"
+"SET MARGIN     10"
+"SET USEROFFSET 0"
+"EXTRACT VIEWLON"
+do forever
+  /* Get starting view latititude and longitude */
+  "WAIT REDRAW"   /* Wait until drawn */
+  viewlon = viewlon - lonstep
+  /* Both checks are here in case you want to reverse the rotation*/
+  if viewlon < -180
+     then viewlon = 180 + (viewlon + 180)
+                           /* negative viewlon + 180 will be negative */
+  if viewlon > 180
+     then viewlon = -180 + (viewlon - 180)
+  "SET VIEWLON " viewlon
+  end
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+# "Experimenter's package" of PMGlobe
+      MINIRAM.LST
+
+# Usual package contents (experimental versions -- no 'PM' prefix):
+      GLOBE.DOC
+      GLOBE.EXE
+      GLOBE32.EXE
+
+# New stuff:
+# Extended command and macro documentation and a simple test
+# macro: "start pmglobe macro test"
+      GLCOMM.DOC
+      TEST.PMG
+
+# Another sample macro and its data file
+      SHOWJAY.PMG
+      CITY.LST
+

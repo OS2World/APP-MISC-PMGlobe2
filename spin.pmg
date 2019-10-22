@@ -1,0 +1,29 @@
+/* Spin the globe with sun position held static */
+/* (Note: currently this 'undoes' positions set interactively while */
+/* running; fixing this is left as an exercise for the reader.)     */
+
+"extract title"                         /* save current title */
+signal on halt
+
+'set title PMGlobe - Slow spin'         /* new title */
+'extract viewlat viewlon sunlat sunlon' /* get current */
+offlat=sunlat-viewlat                   /* relative sun latitude  */
+offlon=sunlon-viewlon                   /* relative sun longitude */
+
+do forever                              /* (Use Halt Macro to end) */
+  'wait +0:05'                          /* redraw every 5 minutes */
+  'extract sunlat sunlon'               /* get new sun position */
+  lon=sunlon-offlon                     /* calculate new view lon */
+  if lon<-180 then lon=lon+360          /* if wrapped past dateline.. */
+   else if lon>180 then lon=lon-360     /* .. adjust as needed */
+  'set viewlon' lon                     /* new longitude */
+  lat=sunlat-offlat                     /* calculate new view lat */
+  if lat<-90 then lat=-lat-180          /* if wrapped over a pole.. */
+   else if lat>90 then lat=180-lat      /* .. adjust as needed */
+  'set viewlat' lat                     /* .. and set */
+  end
+
+halt:  /* Restore setting(s) we altered */
+"SET TITLE" title
+exit
+

@@ -1,0 +1,14 @@
+/* test fonts */
+'font h10 size 10 face Helv'
+'font h20 size 20 face Times New Roman'
+'font hel size 15 face Helvetica Bold'
+'set font h10'
+'mark 0 0 label Origin'
+'set font h20'
+'mark 35 0 label Lat35'
+'set font hel'
+'mark 20 -40 label Mid-pond'
+
+
+
+

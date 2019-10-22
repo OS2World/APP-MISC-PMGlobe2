@@ -1,0 +1,17 @@
+
+/*-----------------------------------------------------------------*/
+/* REDRAW: merge whole screen and ask for repaint                  */
+/* Only used if STARTUP, so only SPRITEPS interesting              */
+/*-----------------------------------------------------------------*/
+void redraw(void) {
+ POINTL pa[4];                     /* array of points for BitBlt */
+ long lrc;                         /* work */
+
+ pa[0].x=(clientx-diam)/2;pa[0].y=(clienty-diam)/2; /* target */
+ pa[1].x=pa[0].x+diam;    pa[1].y=pa[0].y+diam;     /* .. */
+ pa[2].x=0;               pa[2].y=0;                /* source */
+ lrc=GpiBitBlt(cps, spriteps, 3L, pa, ROP_SRCCOPY, 0L);
+ if (diag && lrc>1) printf("GBB S->C lrc=%li\n", lrc);
+ } /* redraw */
+
+

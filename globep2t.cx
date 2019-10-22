@@ -1,0 +1,46 @@
+#if defined(NEEDP2T)
+/*====================================================================*/
+/* PEL2TILT -- convert screen pel coordinate to Tilt Cosine/Sine      */
+/* (currently unused)                                                 */
+/*====================================================================*/
+/* This takes:                                                        */
+/*   X, Y (Screen pels, in range 0->(CLIENTX-1), 0->(CLIENTY-1)       */
+/* and sets:                                                          */
+/*   LCOS, LSIN (Cosine and sine, in range 0-1000)                    */
+/* Returns:                                                           */
+/*   0 if OK                                                          */
+/*   It is assumed that X and Y are already known to be in the circle */
+/*                                                                    */
+/* These algorithms are similar to those in PEL2LL (see above).       */
+
+int pel2tilt(long x, long y, long *pcos, long *psin)
+ {
+ long diam;                        /* globe diameter */
+ long r;                           /* radius (r*2<=diam) */
+ long r2, r2x;                     /* radius squared, and a bit */
+ long x2, y2;                      /* squares of X and Y */
+ long lyz;                         /* length in Y-Z plane */
+ long z;                           /* Z axis */
+ long cos, sin;                    /* local cos/sin for calculation */
+
+ diam=lmin(clientx, clienty);      /* fit smaller dimension */
+ r=(diam-1)/2; r2=r*r;             /* radius, radius squared */
+ r2x=r*(r+1);                      /* radius squared and a bit */
+
+ /* De-centre pels and make relative to circle centre */
+ x=x-(clientx-diam)/2-r; y=y-(clienty-diam)/2-r;
+
+ x2=x*x; y2=y*y;                   /* squares */
+ z  =lsqrt(r2x-x2-y2);             /* calculate Z */
+ lyz=lsqrt(r2x-x2);                /* length in X-Z plane, for LLON */
+
+ /* tilt cos and sine... */
+ sin=(1000L*y)/lyz;
+ cos=(1000L*z)/lyz;
+
+ /* Copy back to arguments */
+ *pcos=cos; *psin=sin;
+ return 0;                         /* Success */
+ } /* pel2tilt */
+#endif
+

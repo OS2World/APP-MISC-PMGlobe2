@@ -1,0 +1,48 @@
+/*---------------------------------------------------------------------+
+                            IBM Internal Use Only
+                   (C) Copyright IBM Corporation 1992
+
+    SPINIT:  Spin the globe rather quickly, keeping the sun at your
+             back, more or less.
+
+             Spins the globe as rapidly as possible.  This is most
+             effective when the globe itself is very small, say less
+             than 1 inch wide on an 8514 in BGA mode under OS/2 2.0
+             on a 386 machine.   I use the following settings:
+
+             o black background
+             o sun and stars
+             o 3-D
+
+    Author:  W. Eliot Kimber
+    Date:    May 19, 1992                                           +-*/
+    Version="1.0"/*
++---------------------------------------------------------------------*/
+timer = "01"  /* Minutes or seconds to wait.  One second is the       */
+              /* shortest possible time.                              */
+nightoffset = "30"  /* degrees offset for viewlon from sunlon */
+timejump = 2400  /* amount of time to jump ahead each iteration,    */
+                 /* in seconds.                                     */
+                 /* 2400 seconds is 10 degrees of rotation  and is  */
+                 /* probably the the maximum. Smaller numbers       */
+                 /* will give slower rotation.                      */
+                 /* To keep a smooth "animation", the larger the    */
+                 /* globe, the smaller the timejump should be.      */
+
+"SET TITLE PMGlobe:  Rotating Globe Effect"
+"SET SHOWDRAW OFF"
+"SET USEROFFSET 0"
+do forever
+  /* Get starting view latititude and longitude */
+  "EXTRACT SUNLON USEROFFSET"
+  "WAIT REDRAW +0:"timer   /* Wait one minute */
+  viewlon = sunlon + nightoffset
+  /* Both checks are here in case you want to reverse the rotation*/
+  if viewlon < -180
+     then viewlon = 180 + (viewlon + 180)
+                           /* negative viewlon + 180 will be negative */
+  if viewlon > 180
+     then viewlon = -180 + (viewlon - 180)
+  "SET VIEWLON " viewlon
+  "SET USEROFFSET"  USEROFFSET + timejump
+end

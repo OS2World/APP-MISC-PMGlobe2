@@ -1,0 +1,9 @@
+/* add one or more months of user offset */
+arg n .; if datatype(n)<>'NUM' then n=1
+
+days=format(365.25*n/12,,0)   /* Calculate nearest whole days */
+'set UserOffset' 3600*24*days
+'redraw'
+'message UserOffset now' days 'days'
+
+
